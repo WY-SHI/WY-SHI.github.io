@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Weiyang Shi | NeuroTech</title>
+    <link>/author/weiyang-shi/</link>
+      <atom:link href="/author/weiyang-shi/index.xml" rel="self" type="application/rss+xml" />
+    <description>Weiyang Shi</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2023 [WY-SHI](https://github.com/WY-SHI) All Rights Reserved.</copyright><lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/logo_huda05752988ecfa1b9f15fa4d8dec8895_80551_300x300_fit_lanczos_2.png</url>
+      <title>Weiyang Shi</title>
+      <link>/author/weiyang-shi/</link>
+    </image>
+    
+    <item>
+      <title>Brainnetome Atlas of Preadolescent Children based on Anatomical Connectivity Profiles</title>
+      <link>/publication/cc2022_wl/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>/publication/cc2022_wl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Two Subtypes of Schizophrenia Identified by an Individual-level Atypical Pattern of Tensor-based Morphometric Measurement</title>
+      <link>/publication/cc2022_wyshi/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>/publication/cc2022_wyshi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Anterior–Posterior Hippocampal Dynamics Support Working Memory Processing</title>
+      <link>/publication/jon2022_jl/</link>
+      <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/publication/jon2022_jl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Developing Neuroimaging Biomarker for Brain Diseases with a Machine Learning Framework and the Brainnetome Atlas</title>
+      <link>/publication/neuroscibull2021_wyshi/</link>
+      <pubDate>Mon, 14 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/neuroscibull2021_wyshi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Constrain Latent Space for Schizophrenia Classification via Dual Space Mapping Net</title>
+      <link>/publication/miccai2020_wyshi/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/miccai2020_wyshi/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

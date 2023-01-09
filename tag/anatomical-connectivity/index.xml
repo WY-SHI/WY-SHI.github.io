@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anatomical Connectivity | NeuroTech</title>
+    <link>/tag/anatomical-connectivity/</link>
+      <atom:link href="/tag/anatomical-connectivity/index.xml" rel="self" type="application/rss+xml" />
+    <description>Anatomical Connectivity</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2023 [WY-SHI](https://github.com/WY-SHI) All Rights Reserved.</copyright><lastBuildDate>Tue, 18 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/logo_huda05752988ecfa1b9f15fa4d8dec8895_80551_300x300_fit_lanczos_2.png</url>
+      <title>Anatomical Connectivity</title>
+      <link>/tag/anatomical-connectivity/</link>
+    </image>
+    
+    <item>
+      <title>Brainnetome Atlas of Preadolescent Children based on Anatomical Connectivity Profiles</title>
+      <link>/publication/cc2022_wl/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>/publication/cc2022_wl/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

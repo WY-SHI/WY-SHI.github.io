@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Semi-supervised | NeuroTech</title>
+    <link>/tag/semi-supervised/</link>
+      <atom:link href="/tag/semi-supervised/index.xml" rel="self" type="application/rss+xml" />
+    <description>Semi-supervised</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2023 [WY-SHI](https://github.com/WY-SHI) All Rights Reserved.</copyright><lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/logo_huda05752988ecfa1b9f15fa4d8dec8895_80551_300x300_fit_lanczos_2.png</url>
+      <title>Semi-supervised</title>
+      <link>/tag/semi-supervised/</link>
+    </image>
+    
+    <item>
+      <title>半监督分割</title>
+      <link>/post/semi-supervised-segmentation/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/semi-supervised-segmentation/</guid>
+      <description>&lt;p&gt;当前针对半监督语义分割领域，在不同数据集上，SOTA的方法主要包含CutMix, ClassMix以及s4GAN_MLMT(数据来源
+&lt;a href=&#34;https://paperswithcode.com/task/semi-supervised-semantic-segmentation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;paperWithCode&lt;/a&gt;)，backbone主要采用DeepLab系列(v3+或v2).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Consistency Regularization:&lt;/strong&gt; predictions for unlabelled data should be invariant to perturbations.&lt;/p&gt;
+&lt;p&gt;最大化类内embedding的相似度(multi domain).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分割backbone:&lt;/p&gt;
+&lt;p&gt;​    a. DeepLab系列 - V3: atrous convolutions + spatial pyramid pooling&lt;/p&gt;
+&lt;p&gt;​    b. Encoder-decoder networks 系列 - skip connections&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-cutmix-githubhttpsgithubcombritefurycutmix-semisup-seg&#34;&gt;1 CutMix (
+&lt;a href=&#34;https://github.com/Britefury/cutmix-semisup-seg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;French G , Laine S , Aila T , et al. Semi-supervised semantic segmentation needs strong, varied perturbations[J]. 2019.&lt;/p&gt;
+&lt;p&gt;#Network Regularization, #Augmentation Strategies, #Mean Teacher Framework&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;11-前言摘录&#34;&gt;1.1 前言摘录&lt;/h3&gt;
+&lt;p&gt;网络正则化(Network Regularization)的思想在于要求网络对不同形式扰动后图片(未标注)输出一致性的预测结果(更像是一种数据增广技术).&lt;/p&gt;
+&lt;p&gt;平滑性假设:相近的图片应该具备相同的标注；聚类假设: 决策面应该位于数据分布密度相对较低的区域；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MixUp, Cutout以及CutMix&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MixUp: The inputs and target labels of two randomly chosen examples are blended using a randomly chosen
+factor. 将两张图片进行组合，例如$C=\alpha{A}+(1-\alpha){B}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cutout: Augment an image by masking a rectangular region to zero. 将图片的部分区域赋值为0.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CutMix: combines aspects of MixUp and CutOut, cutting a rectangular region from image B and pasting it over image A.将图片$B$的部分区域粘贴至图片$A$，形成新的图片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Semi-supervised classification(主要讨论基于一致性正则化的半监督分类方法)&lt;/p&gt;
+&lt;p&gt;组合监督损失(例如交叉熵)和无监督一致性损失&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不同扰动后预测结果的一致性，当前预测与历史预测的一致性&lt;/li&gt;
+&lt;li&gt;Mean teacher model 通过约束学生网络和教师网络预测之间的一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GAN-based adversarial learning: 最小化真实标签与预测标签分布的差异&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语义分割中的一致性正则化/约束(Consistency regularization):&lt;/p&gt;
+&lt;p&gt;分类中的一致性约束：$L_{cons}=d(f_{\theta}(x),f_{\theta}(\hat{x}))$，其中$\hat{x}$为对$x$施加扰动后的图像，$d(·)$为距离度量；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-主要方法&#34;&gt;1.2 主要方法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;模型框架&lt;/p&gt;
+&lt;p&gt;经典的扰动方式，如裁剪、缩放、旋转和颜色变化等，对输出类造成混淆的几率很低，也被证明对提高自然图像的分类准确率十分有效，同时该方法在一些医学图像分割问题上也有正面的效果，但是它对自然图像的分割任务却无效。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Cutout有利于提升网络对各种特征的挖掘利用能力，从而克服图像不同语义成分的多样性组合。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;生成二值化mask M：随机选择一个矩形范围赋值为0 (随机选择矩形的大小和长宽比)&lt;/li&gt;
+&lt;li&gt;将原始图像$A$输入教师网络$g_{\phi}$来产生伪标签(pseudo-targets)；&lt;/li&gt;
+&lt;li&gt;利用伪标签和扰动后的图像$\hat{x}$来训练学生网络$f_{\theta}$&lt;/li&gt;
+&lt;li&gt;计算一致性损失$L_{cons}=||M{\odot}(f_{\theta}(M{\odot}x)-g_{\phi}(x))||^2$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;Cutout.png&#34; alt=&#34;image-20201029160709707&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CutMix&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;原始图像$x_a$和$x_b$,Mask $M$ (面积为图像的一半，随机长宽比和位置)&lt;/li&gt;
+&lt;li&gt;将原始图像属于教师网络产生伪标签$g_{\phi}(x_a)$,$g_{\phi}(x_b)$&lt;/li&gt;
+&lt;li&gt;定义$mix(·)$函数：$mix(a,b,M)=(1-M){\odot}a+M{\odot}b$&lt;/li&gt;
+&lt;li&gt;计算一致性损失$L_{cons}=||mix(g_{\phi}(x_a),g_{\phi}(x_b),M)-f_{\theta}(mix(x_a, x_b,M))||^2$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;CutMix.png&#34; alt=&#34;image-20201029160757506&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-training-setup&#34;&gt;1.3 Training Setup&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;segmentation networks:
+&lt;ol&gt;
+&lt;li&gt;DeepLab v2 network based on ImageNet pre-trained ResNet-101;&lt;/li&gt;
+&lt;li&gt;Dense U-net based on DensetNet-161;&lt;/li&gt;
+&lt;li&gt;DeepLab v3+;&lt;/li&gt;
+&lt;li&gt;PSPNet&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Loss function:
+&lt;ul&gt;
+&lt;li&gt;组合监督损失和一致性损失：$L_{sup}+L_{cons}$&lt;/li&gt;
+&lt;li&gt;为保证两项损失keep balance,$L_{cons}$在类别维度求和，在空间维度求平均&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-classmix-githubhttpsgithubcomwilhelmtclassmix&#34;&gt;2 ClassMix (
+&lt;a href=&#34;https://github.com/WilhelmT/ClassMix&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Olsson, Viktor, et al. &amp;ldquo;ClassMix: Segmentation-Based Data Augmentation for Semi-Supervised Learning.&amp;rdquo; &lt;em&gt;arXiv preprint arXiv:2007.07936&lt;/em&gt; (2020).&lt;/p&gt;
+&lt;p&gt;#Network Regularization, #Augmentation Strategies, #Pseudo-labelling, #Mean Teacher Framework&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;个人感觉方法侧重于实例分割&lt;/em&gt;，提出了一种新的数据增广技术ClassMix&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ClassMix.png&#34; alt=&#34;image-20201029162223879&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;21-对比cutmix与classmix&#34;&gt;2.1 对比CutMix与ClassMix&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CutMix: randomized rectangular regions are cut out from one image and pasted onto another. (mask-based mixing)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ClassMix (a generalization of CutMix): makes use of segmentations to generate the binary masks, instead of rectangles. (segmentation-based augmentation strategies)&lt;/p&gt;
+&lt;p&gt;在生成mask时区分前景和背景&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于DeepLab-v2的ClassMix优于CutMix (但预训练数据不同)，排行榜上未提供ClassMix利用V3+的结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;compare.png&#34; alt=&#34;image-20201030092903981&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-方法&#34;&gt;2.2 方法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ClassMix: 如上图所示，输入两张未标注的图片$A$和$B$，输出一张合成图片$X_A$以及其伪标签$Y_A$，将一张图片的前景部分(随机选择分割后的一半数量的类别)粘贴到另一张图片上，伪代码如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ClassMix_Alg.png&#34; alt=&#34;image-20201029184107086&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mean-Teacher Framework(a trend in state-of-the-art semi-supervised learning)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;损失函数：
+$$
+L(\theta)=E[l(f_{\theta}(X_L),Y_L)+{\lambda}l(f_{\theta}(X_A),Y_A)]
+$$
+其中$X_L$为数据集中已标注的数据，$X_A$为利用未标注数据根据ClassMix合成的数据，$l(·)$为交叉熵损失&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-s4gan_mlmt-githubhttpsgithubcomsud0301semisup-semseg&#34;&gt;3 S4GAN_MLMT (
+&lt;a href=&#34;https://github.com/sud0301/semisup-semseg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mittal S , Tatarchenko M , Brox T . Semi-Supervised Semantic Segmentation with High- and Low-level Consistency[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019, PP(99):1-1.&lt;/p&gt;
+&lt;p&gt;#dual-branch method, #Mean Teacher Framework, #Network Fusion&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;errorSeg.png&#34; alt=&#34;image-20201029215233752&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;31-整体框架&#34;&gt;3.1 整体框架&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Dual-branch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GAN-based branch (Semi-Supervised Semantic Segmentation GAN, s4GAN): 解决分割问题中的低级错误(错误的形状、不准确的边界和不连贯的分割，如上图c)，利用判别器判别真实的标签以及网络预测的标签(feature matching loss)；执行分割任务(像素级分类)&lt;/li&gt;
+&lt;li&gt;Semi-supervised multi-label classification branch (Multi-Label Mean Teacher, MLMT): 通过判断图像中出现的所有类别来解决分割中可能出现的标签类别错误(如上图d)；执行图片级分类。&lt;/li&gt;
+&lt;li&gt;Network Fusion：融合空间信息和类信息(类似于通道注意力机制)，MLMT分支产生的图像级类别标签用于filter s4GAN的输出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;s4GAN_MLMT.png&#34; alt=&#34;image-20201029221455524&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GAN中的discriminator输出可以被当作一个质量评估模块，用于选择最好的预测结果用于后续的self-training；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;32-方法&#34;&gt;3.2 方法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;s4GAN for Semantic Segmentation&lt;/p&gt;
+&lt;p&gt;分割网络$S$产生分割结果，concatenate原始图像与分割结果送入判别器来对齐真实标注与生成的分割图的分布。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;训练分割网络$S$: 损失函数包括三部分(交叉熵损失，feature matching损失，self-training损失)，&lt;/p&gt;
+&lt;p&gt;a. 交叉熵损失用于像素级别分类(分割)&lt;/p&gt;
+&lt;p&gt;b. feature matching损失$L_{fm}$用于最小化真实标注与预测分割图的mean discrepancy, 其中$D_k(·)$代表判别器第$k$层的输出结果。
+$$
+L_{fm}=||E_{(x^l,y^l)~D^l}[D_k(y^{l}{\oplus}x^{l})]-E_{x^{u}{~}D^u}[D_k(S(x^{u}){\oplus}x^{u})]||
+$$
+c. self-training损失用于保持生成器和判别器之间的动态平衡: 为无标注的图片选择生成器(分割网络$S$)输出的最优的分割结果(可以骗过判别器的结果)作为标注来进行监督训练，利用判别器输出的评分做选择(设定阈值)
+$$
+L_{st}=
+\begin{cases}
+-\sum_{h,w,c}y^*logS(x^u), &amp;amp;\text{if }D(S(x^u)){\ge}\gamma\&lt;br&gt;
+0,&amp;amp; \text{otherwise}
+\end{cases}
+$$
+其中，$y^*$是由$S(x^u)$产生的pseudo pixel-wise labels&lt;/p&gt;
+&lt;p&gt;最终，损失函数为：
+$$
+L_S=L_{ce}+{\lambda}_{fm}L_{fm}+{\lambda}_{st}L_{st}
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;训练判别网络$D$:
+$$
+L_{D}=E_{(x^l,y^l)~D^l}[\text{log}D(y^{l}{\oplus}x^{l})]+E_{x^{u}{~}D^u}[\text{log}(1-D(S(x^{u}){\oplus}x^{u}))]
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Multi-label Semi-supervised Classification&lt;/p&gt;
+&lt;p&gt;使用 Mean Teacher framework 来进行semi-supervised multilabel image classification.&lt;/p&gt;
+&lt;p&gt;Student network $G_{\theta}$ 和Teacher network $H_{{\theta}^{&#39;}}$的输入分别为同一张图像的不同扰动后的图像，Teacher network的参数权重是Student network参数的exponential moving average. Student network的损失函数为：
+$$
+L_{MT}=-\sum_{c}z^{l}(c)\text{log}(G_{\theta}(x^l)(c))+\lambda_{cons}||G_{\theta}(x^{&#39;(u,l)}-H_{{\theta}^{&#39;}}(x^{(u,l)})||^2
+$$
+其中，$x$和$x^{&#39;}$是同一张图片的不同扰动，$z^{l}$是真实标签的multi-hot vector.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Network Fusion&lt;/p&gt;
+&lt;p&gt;两个branch是分开训练的，最终采用Network Fusion的方式进行融合以得到最后的统一结果,思想为根据预测所得图片上出现的类别概率缩放其对应的分割图上的概率：&lt;/p&gt;
+&lt;p&gt;$$
+S(x)_{c}=
+\begin{cases}
+0, &amp;amp;\text{if }G(x)_c{\le}\tau\&lt;br&gt;
+S(x)_c,&amp;amp; \text{otherwise}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;$S(x)_{c}$是第$c$类的分割图,$G(x_c)$是MLMT-branch的soft output, $\tau=0.2$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;supplement-mean-teacher-framework&#34;&gt;Supplement. Mean Teacher Framework&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tarvainen A , Valpola H . Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results. NIPS 2017.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Semi-supervised通常可将数据分为带标签、不带标签两部分。Mean Teacher Framework通常是指对无标签数据进行不同形式的数据增广，分别送入teacher model和student model (teacher model和student model采用相同的模型架构)，约束teacher model和student model对同一样本不同增广形式具有一致性输出。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;meanTeach.png&#34; alt=&#34;image-20201029205629557&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在训练过程中，首先利用标注数据对student model进行监督学习，随后利用无标注数据来优化teacher model，具体流程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;利用student模型对图像进行预测得到$y_i$,然后利用teacher model预测得到$y_{i}^{’}$；&lt;/li&gt;
+&lt;li&gt;约束预测结果$y_i$和$y_i^{&#39;}$的一致性($mseLoss$或者$KLLoss$)，并结合有标注的图像计算监督损失($crossEntropyLoss$)，将两部分的损失函数进行梯度反传用于更新student model的参数&lt;/li&gt;
+&lt;li&gt;teacher model模型的参数通过计算与student模型参数的滑动平均得到。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$
+\theta_{t}^{&#39;} = {\alpha}{\theta}_{t-1}^{&#39;}+(1-{\alpha}){\theta}_t
+$$&lt;/p&gt;
+&lt;p&gt;​		其中${\theta}_t$为student model的参数，${\theta}_t^{&#39;}$为teacher model的参数。最后teacher model将作为最终的预测模型。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

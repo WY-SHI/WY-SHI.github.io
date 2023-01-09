@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functional Connections | NeuroTech</title>
+    <link>/tag/functional-connections/</link>
+      <atom:link href="/tag/functional-connections/index.xml" rel="self" type="application/rss+xml" />
+    <description>Functional Connections</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2023 [WY-SHI](https://github.com/WY-SHI) All Rights Reserved.</copyright><lastBuildDate>Wed, 19 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/logo_huda05752988ecfa1b9f15fa4d8dec8895_80551_300x300_fit_lanczos_2.png</url>
+      <title>Functional Connections</title>
+      <link>/tag/functional-connections/</link>
+    </image>
+    
+    <item>
+      <title>Anterior–Posterior Hippocampal Dynamics Support Working Memory Processing</title>
+      <link>/publication/jon2022_jl/</link>
+      <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/publication/jon2022_jl/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

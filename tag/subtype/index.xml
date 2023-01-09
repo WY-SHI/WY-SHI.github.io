@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Subtype | NeuroTech</title>
+    <link>/tag/subtype/</link>
+      <atom:link href="/tag/subtype/index.xml" rel="self" type="application/rss+xml" />
+    <description>Subtype</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2023 [WY-SHI](https://github.com/WY-SHI) All Rights Reserved.</copyright><lastBuildDate>Thu, 25 Aug 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/logo_huda05752988ecfa1b9f15fa4d8dec8895_80551_300x300_fit_lanczos_2.png</url>
+      <title>Subtype</title>
+      <link>/tag/subtype/</link>
+    </image>
+    
+    <item>
+      <title>Two Subtypes of Schizophrenia Identified by an Individual-level Atypical Pattern of Tensor-based Morphometric Measurement</title>
+      <link>/publication/cc2022_wyshi/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>/publication/cc2022_wyshi/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

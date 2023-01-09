@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paper | NeuroTech</title>
+    <link>/tag/paper/</link>
+      <atom:link href="/tag/paper/index.xml" rel="self" type="application/rss+xml" />
+    <description>Paper</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>©2023 [WY-SHI](https://github.com/WY-SHI) All Rights Reserved.</copyright><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/logo_huda05752988ecfa1b9f15fa4d8dec8895_80551_300x300_fit_lanczos_2.png</url>
+      <title>Paper</title>
+      <link>/tag/paper/</link>
+    </image>
+    
+    <item>
+      <title>Reading and Tool List</title>
+      <link>/post/cpti/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>/post/cpti/</guid>
+      <description>&lt;p&gt;Collection of Papers, Tools and Ideas focusing on neuroscience and machine learning which are worth spreading.&lt;/p&gt;
+&lt;h3 id=&#34;1-papers&#34;&gt;1. Papers&lt;/h3&gt;
+&lt;h4 id=&#34;11-mental-disorders&#34;&gt;1.1. Mental Disorders&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;[AD] Qiu S, Joshi P S, Miller M I, et al. Development and validation of an interpretable deep learning framework for Alzheimer’s disease classification[J]. Brain, 2020.&lt;/li&gt;
+&lt;li&gt;[AD] Varol E, Sotiras A, Davatzikos C, et al. HYDRA: Revealing heterogeneity of imaging and genetic patterns through a multiple max-margin discriminative analysis framework[J]. Neuroimage, 2017, 145: 346-364.&lt;/li&gt;
+&lt;li&gt;[Survey] Zhang L, Wang M, Liu M, et al. A Survey on Deep Learning for Neuroimaging-based Brain Disorder Analysis[J]. arXiv preprint arXiv:2005.04573, 2020.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;12-neuroscience&#34;&gt;1.2. Neuroscience&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Yang G R, Joglekar M R, Song H F, et al. Task representations in neural networks trained to perform many cognitive tasks[J]. Nature neuroscience, 2019, 22(2): 297-306.&lt;/li&gt;
+&lt;li&gt;Finn E S, Shen X, Scheinost D, et al. Functional connectome fingerprinting: identifying individuals using patterns of brain connectivity[J]. Nature neuroscience, 2015, 18(11): 1664-1671.&lt;/li&gt;
+&lt;li&gt;Cai B, Zhang G, Zhang A, et al. Functional connectome fingerprinting: Identifying individuals and predicting cognitive functions via autoencoder[J]. Human Brain Mapping, 2021, 42(9): 2691-2705.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;13-graph-representation&#34;&gt;1.3. Graph Representation&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Sankar A , Wu Y , Gou L , et al. Dynamic Graph Representation Learning via Self-Attention Networks[J]. 2018.&lt;/li&gt;
+&lt;li&gt;Rossi E, Chamberlain B, Frasca F, et al. Temporal Graph Networks for Deep Learning on Dynamic Graphs[J]. arXiv preprint arXiv:2006.10637, 2020.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;14-interpretable-machine-learning&#34;&gt;1.4. Interpretable Machine Learning&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Wan A, Dunlap L, Ho D, et al. NBDT: Neural-Backed Decision Trees[J]. arXiv preprint arXiv:2004.00221, 2020.&lt;/li&gt;
+&lt;li&gt;Lundberg S M, Nair B, Vavilala M S, et al. Explainable machine-learning predictions for the prevention of hypoxaemia during surgery[J]. Nature Biomedical Engineering, 2018, 2(10): 749.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;15-unsupervised-learning&#34;&gt;1.5. Unsupervised Learning&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Dong J, Cong Y, Sun G, et al. What can be transferred: Unsupervised domain adaptation for endoscopic lesions segmentation[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 4023-4032.&lt;/li&gt;
+&lt;li&gt;He K, Fan H, Wu Y, et al. Momentum contrast for unsupervised visual representation learning[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 9729-9738.&lt;/li&gt;
+&lt;li&gt;Hu H, Xie L, Hong R, et al. Creating Something from Nothing: Unsupervised Knowledge Distillation for Cross-Modal Hashing[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 3123-3132.&lt;/li&gt;
+&lt;li&gt;Lin Y, Xie L, Wu Y, et al. Unsupervised person re-identification via softened similarity learning[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 3390-3399.&lt;/li&gt;
+&lt;li&gt;Tang H, Chen K, Jia K. Unsupervised Domain Adaptation via Structurally Regularized Deep Clustering[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 8725-8735.&lt;/li&gt;
+&lt;li&gt;Wang D, Zhang S. Unsupervised Person Re-identification via Multi-label Classification[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 10981-10990.&lt;/li&gt;
+&lt;li&gt;Ye M, Shen J. Probabilistic structural latent representation for unsupervised embedding[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 5457-5466.&lt;/li&gt;
+&lt;li&gt;Yu Y, Odobez J M. Unsupervised Representation Learning for Gaze Estimation[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 7314-7324.&lt;/li&gt;
+&lt;li&gt;Zhan X, Xie J, Liu Z, et al. Online Deep Clustering for Unsupervised Representation Learning[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 6688-6697.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-tools&#34;&gt;2. Tools&lt;/h3&gt;
+&lt;h4 id=&#34;21-freesurfer&#34;&gt;2.1. Freesurfer&lt;/h4&gt;
+&lt;p&gt;FreeSurfer is a software package for the analysis and visualization of structural and functional neuroimaging data from cross-sectional or longitudinal studies. [
+&lt;a href=&#34;http://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferWiki/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WiKi&lt;/a&gt;]&lt;/p&gt;
+&lt;h4 id=&#34;22-fsl&#34;&gt;2.2. FSL&lt;/h4&gt;
+&lt;p&gt;FSL is a comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data. [
+&lt;a href=&#34;https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;WiKi&lt;/a&gt;]&lt;/p&gt;
+&lt;h4 id=&#34;23-brant&#34;&gt;2.3. BRANT&lt;/h4&gt;
+&lt;p&gt;BRAinNetome fMRI Toolkit &amp;ndash; MATLAB scripts/GUIs for fMRI data pre-/post-processes [
+&lt;a href=&#34;https://github.com/kbxu/brant/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;] [
+&lt;a href=&#34;http://brant.brainnetome.org/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Document&lt;/a&gt;]&lt;/p&gt;
+&lt;h4 id=&#34;24-clinica&#34;&gt;2.4. Clinica&lt;/h4&gt;
+&lt;p&gt;Software platform for clinical neuroimaging studies [
+&lt;a href=&#34;https://github.com/aramis-lab/clinica&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github&lt;/a&gt;]&lt;/p&gt;
+&lt;h4 id=&#34;25-nilearn&#34;&gt;2.5 Nilearn&lt;/h4&gt;
+&lt;p&gt;Machine learning for Neuro-Imaging in Python [
+&lt;a href=&#34;http://nilearn.github.io/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Document&lt;/a&gt;]&lt;/p&gt;
+&lt;h4 id=&#34;26-dipy&#34;&gt;2.6 Dipy&lt;/h4&gt;
+&lt;p&gt;DIPY is the paragon 3D/4D+ imaging library in Python. Contains generic methods for spatial normalization, signal processing, machine learning, statistical analysis and visualization of medical images. Additionally, it contains specialized methods for computational anatomy including diffusion, perfusion and structural imaging. [
+&lt;a href=&#34;https://dipy.org/tutorials/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;tutorials&lt;/a&gt;]&lt;/p&gt;
+&lt;hr&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
